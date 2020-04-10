@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 const yaml = require('yaml');
 const path = require('path');
-const open = require("open");
+const open = require('open');
 
 const DEFAULT_FORM_DATA = require('./lib/default-form-data');
 
@@ -13,8 +15,8 @@ async function runApp() {
   const schema = await getSchema();
   const generated = schema.replace('.yml', '.html');
 
-  const schemaPath = path.join('./schemas', schema);
-  const generatedPath = path.join('./generated', generated);
+  const schemaPath = path.join(__dirname, './schemas', schema);
+  const generatedPath = path.join(__dirname, './generated', generated);
 
   const wordSchemaString = fs.readFileSync(schemaPath, 'utf8');
   const wordSchema = yaml.parse(wordSchemaString);
@@ -29,7 +31,9 @@ async function runApp() {
   const response = await generateWordSearch(THE_FORM_DATA);
   const theHTML = prepareHTML(response);
 
-  fs.mkdirSync('generated', { recursive: true });
+  const generatedFolder = path.join(__dirname, 'generated');
+
+  fs.mkdirSync(generatedFolder, { recursive: true });
   fs.writeFileSync(generatedPath, theHTML);
 
   await open(generatedPath);

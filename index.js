@@ -1,24 +1,27 @@
 const fs = require('fs');
-
-const { JSDOM } = require('jsdom');
+const yaml = require('yaml');
 
 const DEFAULT_FORM_DATA = require('./lib/default-form-data');
+
 const { generateWordSearch } = require('./lib/call-service');
-const { prepareForPrint, removeExtraContent: removeScripts } = require('./lib/clean-js');
+const { prepareHTML } = require('./lib/clean-html');
 
-const CUSTOM_FORM_DATA = {
-  puzzleTitle: 'Animales',
-  inputWords: 'Serpiente,Gato,Perro,Venado,Caballo,Bufalo,Vaca,Becerro,Murcielago,Gacela,Paloma,Zancudo,Mosca,Abeja,Pulga',
-};
+async function runApp() {
+  const wordSchemaString = fs.readFileSync('./schemas/animals.yml', 'utf8');
+  const wordSchema = yaml.parse(wordSchemaString);
 
-const THE_FORM_DATA = { ...DEFAULT_FORM_DATA, ...CUSTOM_FORM_DATA };
+  const CUSTOM_FORM_DATA = {
+    puzzleTitle: wordSchema.title,
+    inputWords: wordSchema.words.join(','),
+  };
 
-generateWordSearch(THE_FORM_DATA).then((response) => {
-  const dom = new JSDOM(response);
-  const { document } = dom.window;
+  const THE_FORM_DATA = { ...DEFAULT_FORM_DATA, ...CUSTOM_FORM_DATA };
 
-  prepareForPrint(document);
-  removeScripts(document);
+  const response = await generateWordSearch(THE_FORM_DATA);
+  const theHTML = prepareHTML(response);
 
-  fs.writeFileSync('./response.html', dom.serialize());
-});
+  fs.mkdirSync('generated', { recursive: true });
+  fs.writeFileSync('./generated/animals.html', theHTML);
+}
+
+runApp();

@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^16.2.2"
+    "jsdom": "^16.2.2",
+    "yaml": "^1.8.3"
   }
 }

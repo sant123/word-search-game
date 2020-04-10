@@ -1,13 +1,13 @@
 {
   "name": "word-search-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generates a Word Search game from a Yaml schema.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Santiago Aguilar Hernández",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.0.0",

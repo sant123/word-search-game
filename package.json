@@ -1,12 +1,15 @@
 {
   "name": "word-search-generator",
   "version": "1.0.0",
-  "description": "Generates a Word Search game from a Yaml schema.",
+  "description": "Generate a word search game from a Yaml schema.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "word search game",
+    "word search game generator"
+  ],
   "author": "Santiago Aguilar Hernández",
   "license": "MIT",
   "dependencies": {
@@ -16,5 +19,13 @@
     "open": "^7.0.3",
     "yaml": "^1.8.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sant123/word-search-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sant123/word-search-generator/issues"
+  },
+  "homepage": "https://github.com/sant123/word-search-generator#readme",
   "bin": "./index.js"
 }

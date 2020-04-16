@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "Santiago Aguilar Hernández",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.0.0",
     "inquirer": "^7.1.0",

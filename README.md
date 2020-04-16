@@ -1,4 +1,4 @@
-# Word Search Generator
+# Word Search Game
 
 Simple application to create and print your word search games using Yaml files.
 
@@ -6,12 +6,12 @@ Simple application to create and print your word search games using Yaml files.
 
 ## npm
 ```bash
-npm install word-search-generator -g
+npm install word-search-game -g
 ```
 
 ## Yarn
 ```bash
-yarn global add word-search-generator
+yarn global add word-search-game
 ```
 
 # Getting Started
@@ -29,7 +29,7 @@ words:
     - Word3
     - ...
 ```
-* Call `word-search-generator` in a terminal, you should get a prompt of the files that reside in the `schemas` folder.
+* Call `word-search-game` in a terminal, you should get a prompt of the files that reside in the `schemas` folder.
 * Select your file and wait till generation completes, after that it will open a browser with the game ready to be printed.
 * The game will be in `generated` folder following `.html` format.
 

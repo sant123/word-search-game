@@ -1,5 +1,5 @@
 {
-  "name": "word-search-generator",
+  "name": "word-search-game",
   "version": "1.0.0",
   "description": "Generate a word search game from a Yaml schema.",
   "main": "index.js",
@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sant123/word-search-generator.git"
+    "url": "git+https://github.com/sant123/word-search-game.git"
   },
   "bugs": {
-    "url": "https://github.com/sant123/word-search-generator/issues"
+    "url": "https://github.com/sant123/word-search-game/issues"
   },
-  "homepage": "https://github.com/sant123/word-search-generator#readme",
+  "homepage": "https://github.com/sant123/word-search-game#readme",
   "bin": "./index.js"
 }

@@ -16,10 +16,9 @@ yarn global add word-search-game
 
 # Getting Started
 
-* Create a folder called `schemas` at the root of this project
-* Place your Yaml files inside `schemas`
+* Create a Yaml file
 
-Yaml files should follow this structure:
+Yaml files need to follow this structure:
 
 ```yml
 title: Any title
@@ -29,9 +28,22 @@ words:
     - Word3
     - ...
 ```
-* Call `word-search-game` in a terminal, you should get a prompt of the files that reside in the `schemas` folder.
+* Open a terminal in the same Yaml directory.
+* Call `word-search-game`, you will get a prompt of Yaml files that reside in the current directory.
 * Select your file and wait till generation completes, after that it will open a browser with the game ready to be printed.
-* The game will be in `generated` folder following `.html` format.
+* A `generated` folder will be created with the word games with `.html` format.
+
+## Another ways to call a Yaml file:
+
+### File in current directory
+```bash
+word-search-game example.yml
+```
+### File in a relative path
+```bash
+word-search-game some-path/example.yml
+```
+In this case, `generated` folder will be created under `some-path`
 
 That's it!
 

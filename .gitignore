@@ -104,5 +104,4 @@ dist
 .tern-port
 
 # Ignore schemas and generated files
-/generated
 /schemas

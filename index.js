@@ -12,13 +12,14 @@ const { generateWordSearch } = require('./lib/call-service');
 const { prepareHTML } = require('./lib/clean-html');
 
 async function runApp() {
-  const schema = await getSchema();
-  const generated = schema.replace('.yml', '.html');
+  const { schema, schemaFolder } = await getSchema();
 
-  const schemaPath = path.join(__dirname, './schemas', schema);
-  const generatedPath = path.join(__dirname, './generated', generated);
+  const schemaFilePath = path.join(schemaFolder, schema);
 
-  const wordSchemaString = fs.readFileSync(schemaPath, 'utf8');
+  const generatedFolder = path.join(schemaFolder, 'generated');
+  const generatedFilePath = path.join(generatedFolder, schema.replace('.yml', '.html'));
+
+  const wordSchemaString = fs.readFileSync(schemaFilePath, 'utf8');
   const wordSchema = yaml.parse(wordSchemaString);
 
   const CUSTOM_FORM_DATA = {
@@ -31,12 +32,10 @@ async function runApp() {
   const response = await generateWordSearch(THE_FORM_DATA);
   const theHTML = prepareHTML(response);
 
-  const generatedFolder = path.join(__dirname, 'generated');
-
   fs.mkdirSync(generatedFolder, { recursive: true });
-  fs.writeFileSync(generatedPath, theHTML);
+  fs.writeFileSync(generatedFilePath, theHTML);
 
-  await open(generatedPath);
+  await open(generatedFilePath);
 }
 
 runApp();
